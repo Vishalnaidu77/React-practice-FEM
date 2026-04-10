@@ -1,7 +1,6 @@
 import path from 'node:path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ReactServerWebpackPlugin from 'react-server-dom-webpack/plugin'
-import plugin from 'react-server-dom-webpack/plugin'
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
@@ -28,7 +27,7 @@ const config = {
         ]
     },
     resolve: {
-        extension: [".js", ".jsx"]
+        extensions: [".js", ".jsx"]
     },
     plugins: [
         new HtmlWebpackPlugin({
