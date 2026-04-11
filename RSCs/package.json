@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev:client": "webpack --watch",
-    "dev:server": "node --watch --condition react-server server/main.js"
+    "dev:server": "tsx watch --conditions react-server server/main.js"
   },
   "keywords": [],
   "type": "module",
@@ -32,5 +32,8 @@
     "style-loader": "^4.0.0",
     "webpack": "^5.106.0",
     "webpack-cli": "^7.0.2"
+  },
+  "devDependencies": {
+    "tsx": "^4.21.0"
   }
 }

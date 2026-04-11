@@ -1,3 +1,4 @@
+import React from "react";
 import { Suspense } from "react";
 import ServerComponent from './ServerComponent'
 import ClientComponent from './ClientComponent'

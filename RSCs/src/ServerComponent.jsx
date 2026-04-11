@@ -1,9 +1,13 @@
 import React from 'react'
 import { AsyncDatabase } from 'promised-sqlite3'
-import path from 'node:path'
+import path, { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url';
 
 const MyNotes = async () => {
     console.log("Rendering MyNotes server component");
+
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
     
     const fetchNotes = async () => {
         console.log("Running server function fetchnotes");

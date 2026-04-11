@@ -27,7 +27,7 @@ const fastify = Fastify({
 })
 
 fastify.register(fastifyStaticPlugin, {
-    root: path.join(__dirname, " ../dist"),
+    root: path.join(__dirname, "../dist"),
     prefix: "/assets/",
 })
 
@@ -36,12 +36,20 @@ fastify.register(fastifyStaticPlugin, {
     decorateReply: false
 })
 
-fastify.get("/", async function rootHandler(req, reply){
+fastify.get("/", async function rootHandler(request, reply){
     return reply.sendFile("index.html");
 })
 
-fastify.get("/react-flight", function reactFlightHandler(req, reply){
-    
+fastify.get("/react-flight", function reactFlightHandler(request, reply){
+    try {
+        const stream = renderToPipeableStream(React.createElement(App), MODULE_MAP)
+        reply.hijack()
+        reply.raw.setHeader("Content-Type", "application/octet-stream")
+        stream.pipe(reply.raw)
+    } catch (err) {
+        request.log.error("react-flight err", err)
+        throw err;
+    }
 })
 
 export async function start() {

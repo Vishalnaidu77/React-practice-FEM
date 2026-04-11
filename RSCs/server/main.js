@@ -1,10 +1,5 @@
-import reactServerregister from 'react-server-dom-webpack/node-register'
-reactServerregister();
+import reactServerRegister from "react-server-dom-webpack/node-register";
+import { start } from "./server.js";
 
-import babelRegister from '@babel/register'
-babelRegister({
-    ignore: [/[\\\/](dist|server|node_modules)[\\\/]/],
-    plugins: ["@babel/transform-modules-module"]
-})
-
-import "./server"
+reactServerRegister();
+start();
